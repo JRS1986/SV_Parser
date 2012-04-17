@@ -58,6 +58,8 @@ int main(int argc, char **argv, char **env) {
 	   parser->VParse::parse(fileline);
    }
   
+   parser->VParse::setEof();
+
   dut.close();
   scoreboard.close();
 
