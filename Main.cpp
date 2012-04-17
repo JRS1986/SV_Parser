@@ -49,18 +49,18 @@ int main(int argc, char **argv, char **env) {
 
    std::cout << "filelinep created" << std::endl;
 
-   My_Parser *parser = new My_Parser(filelinep, symsp, 0, 0);
+   My_Parser *parser = new My_Parser(filelinep, symsp, 1, 0);
 
    filelinep->setParser(parser);
 
    std::cout << "dut.sv start parsing" << std::endl;
 
-   while(!dut.eof()){
-	   dut.getline(fileline, 4096);
-	   parser->VParse::parse(fileline);
-   }
+   //while(!dut.eof()){
+//	   dut.getline(fileline, 4096);
+//	   parser->VParse::parse(fileline);
+//   }
   
-   parser->VParse::setEof();
+   //parser->VParse::setEof();
 
    std::cout << "dut.sv parsed" << std::endl;
    dut.close();

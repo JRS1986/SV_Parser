@@ -43,7 +43,7 @@ void My_Parser::keywordCb(VFileLine* fl, const string& text) {
         static string hold1; hold1 = text;
         call(NULL, 1, "keyword", hold1.c_str());
     }*/
-    std::cout << "My_Parser::keywordCb called" << std::endl;
+    std::cout << "My_Parser::keywordCb called" << fl << ";" << text << std::endl;
 }
 
 void My_Parser::numberCb(VFileLine* fl, const string& text) {
@@ -52,7 +52,7 @@ void My_Parser::numberCb(VFileLine* fl, const string& text) {
         static string hold1; hold1 = text;
         call(NULL, 1, "number", hold1.c_str());
     }*/
-    std::cout << "My_Parser::numberCb called" << std::endl;
+    std::cout << "My_Parser::numberCb called" << fl << ";" << text << std::endl;
 }
 
 void My_Parser::operatorCb(VFileLine* fl, const string& text) {
@@ -61,7 +61,7 @@ void My_Parser::operatorCb(VFileLine* fl, const string& text) {
         static string hold1; hold1 = text;
         call(NULL, 1, "operator", hold1.c_str());
     }*/
-    std::cout << "My_Parser::operatorCb called" << std::endl;
+    std::cout << "My_Parser::operatorCb called" << fl << ";" << text << std::endl;
 }
 
 void My_Parser::preprocCb(VFileLine* fl, const string& text) {
@@ -70,7 +70,7 @@ void My_Parser::preprocCb(VFileLine* fl, const string& text) {
         static string hold1; hold1 = text;
         call(NULL, 1, "preproc", hold1.c_str());
     }*/
-    std::cout << "My_Parser::preprocCb called" << std::endl;
+    std::cout << "My_Parser::preprocCb called" << fl << ";" << text << std::endl;
 }
 
 void My_Parser::stringCb(VFileLine* fl, const string& text) {
@@ -79,7 +79,7 @@ void My_Parser::stringCb(VFileLine* fl, const string& text) {
         static string hold1; hold1 = text;
         call(NULL, 1, "string", hold1.c_str());
     }*/
-    std::cout << "My_Parser::stringCb called" << std::endl;
+    std::cout << "My_Parser::stringCb called" << fl << ";" << text << std::endl;
 }
 
 void My_Parser::symbolCb(VFileLine* fl, const string& text) {
@@ -88,7 +88,7 @@ void My_Parser::symbolCb(VFileLine* fl, const string& text) {
         static string hold1; hold1 = text;
         call(NULL, 1, "symbol", hold1.c_str());
     }*/
-    std::cout << "My_Parser::symbolCb called" << std::endl;
+    std::cout << "My_Parser::symbolCb called" << fl << ";" << text << std::endl;
 }
 
 void My_Parser::sysfuncCb(VFileLine* fl, const string& text) {
