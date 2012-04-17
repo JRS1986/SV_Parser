@@ -53,6 +53,8 @@ int main(int argc, char **argv, char **env) {
 
    filelinep->setParser(parser);
 
+   std::cout << "dut.sv start parsing" << std::endl;
+
    while(!dut.eof()){
 	   dut.getline(fileline, 4096);
 	   parser->VParse::parse(fileline);
@@ -60,8 +62,27 @@ int main(int argc, char **argv, char **env) {
   
    parser->VParse::setEof();
 
-  dut.close();
-  scoreboard.close();
+   std::cout << "dut.sv parsed" << std::endl;
+   dut.close();
+
+   //-- parsing des Scoreboards
+   filelinep->create("files/htax_bridge_scoreboard.sv", 0);
+
+      std::cout << "filelinep created" << std::endl;
+
+      filelinep->setParser(parser);
+
+      std::cout << "htax_bridge_scoreboard.sv start parsing" << std::endl;
+
+      while(!scoreboard.eof()){
+    	  scoreboard.getline(fileline, 4096);
+   	   parser->VParse::parse(fileline);
+      }
+
+      parser->VParse::setEof();
+
+      std::cout << "htax_bridge_scoreboard.sv parsed" << std::endl;
+      scoreboard.close();
 
   //-- Perl stuff ----------------------------------------
   perl_destruct(my_perl);
