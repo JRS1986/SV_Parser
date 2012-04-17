@@ -52,9 +52,9 @@ int main(int argc, char **argv, char **env) {
    My_Parser *parser = new My_Parser(filelinep, symsp, 0, 0);
 
    filelinep->setParser(parser);
-   dut.getline(fileline, 4096);
 
    while(!dut.eof()){
+	   dut.getline(fileline, 4096);
 	   parser->VParse::parse(fileline);
    }
   
