@@ -11,10 +11,50 @@ class VFileLineParseXs;
 
 class My_Parser : public VParse {
 public:
-  VFileLine*	m_cbFilelinep;
-   deque<VFileLineParseXs*> m_filelineps;
+	//SV*		m_self;
+	VFileLine*	m_cbFilelinep;
+	deque<VFileLineParseXs*> m_filelineps;
+
+	 struct {  // Bit packed to help the cache
+	        bool m_useCb_attribute:1;
+	        bool m_useCb_class:1;
+	        bool m_useCb_comment:1;
+	        bool m_useCb_contassign:1;
+	        bool m_useCb_covergroup:1;
+	        bool m_useCb_defparam:1;
+	        bool m_useCb_endcell:1;
+	        bool m_useCb_endclass:1;
+	        bool m_useCb_endgroup:1;
+	        bool m_useCb_endinterface:1;
+	        bool m_useCb_endmodport:1;
+	        bool m_useCb_endmodule:1;
+	        bool m_useCb_endpackage:1;
+	        bool m_useCb_endparse:1;
+	        bool m_useCb_endprogram:1;
+	        bool m_useCb_endtaskfunc:1;
+	        bool m_useCb_function:1;
+	        bool m_useCb_import:1;
+	        bool m_useCb_instant:1;
+	        bool m_useCb_interface:1;
+	        bool m_useCb_keyword:1;
+	        bool m_useCb_modport:1;
+	        bool m_useCb_module:1;
+	        bool m_useCb_number:1;
+	        bool m_useCb_operator:1;
+	        bool m_useCb_package:1;
+	        bool m_useCb_parampin:1;
+	        bool m_useCb_pin:1;
+	        bool m_useCb_port:1;
+	        bool m_useCb_preproc:1;
+	        bool m_useCb_program:1;
+	        bool m_useCb_string:1;
+	        bool m_useCb_symbol:1;
+	        bool m_useCb_sysfunc:1;
+	        bool m_useCb_task:1;
+	        bool m_useCb_var:1;
+	    };
   
-  VFileLine* cbFilelinep() const { return m_cbFilelinep; }
+    VFileLine* cbFilelinep() const { return m_cbFilelinep; }
     //void cbFileline(VFileLine* filelinep) { m_cbFilelinep = filelinep; }
   
     My_Parser(VFileLine* filelinep, av* symsp, bool sigparser, bool useUnreadback)
@@ -24,6 +64,45 @@ public:
     My_Parser(const My_Parser &mp);
     virtual ~My_Parser();
     
+    void set_cb_use() {
+           m_useCb_attribute = true;
+           m_useCb_class = true;
+           m_useCb_comment = false;
+           m_useCb_contassign = true;
+           m_useCb_covergroup = true;
+           m_useCb_defparam = true;
+           m_useCb_endcell = true;
+           m_useCb_endclass = true;
+           m_useCb_endgroup = true;
+           m_useCb_endinterface = true;
+           m_useCb_endmodport = true;
+           m_useCb_endmodule = true;
+           m_useCb_endpackage = true;
+           m_useCb_endparse = true;
+           m_useCb_endprogram = true;
+           m_useCb_endtaskfunc = true;
+           m_useCb_function = true;
+           m_useCb_import = true;
+           m_useCb_instant = true;
+           m_useCb_interface = true;
+           m_useCb_keyword = true;
+           m_useCb_modport = true;
+           m_useCb_module = true;
+           m_useCb_number = true;
+           m_useCb_operator = true;
+           m_useCb_package = true;
+           m_useCb_parampin = true;
+           m_useCb_pin = true;
+           m_useCb_port = true;
+           m_useCb_preproc = true;
+           m_useCb_program = true;
+           m_useCb_string = true;
+           m_useCb_symbol = true;
+           m_useCb_sysfunc = true;
+           m_useCb_task = true;
+           m_useCb_var = true;
+       }
+
     void attributeCb(VFileLine* fl, const string& text);
     void commentCb(VFileLine* fl, const string& text);
     void endparseCb(VFileLine* fl, const string& text);

@@ -50,6 +50,7 @@ int main(int argc, char **argv, char **env) {
    std::cout << "filelinep created" << std::endl;
 
    My_Parser *parser = new My_Parser(filelinep, symsp, 1, 0);
+   parser->set_cb_use();
 
    filelinep->setParser(parser);
 
