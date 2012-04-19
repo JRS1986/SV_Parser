@@ -31,11 +31,11 @@ int main(int argc, char **argv, char **env) {
   //};
   // open file
   
-  ifstream dut ("files/dut.sv");
+  ifstream dut ("files/htoc_item_t.sv");
   if (dut.is_open()) {
-    std::cout << "dut.sv opened correctly" << std::endl;
+    std::cout << "htoc_item_t.sv opened correctly" << std::endl;
   } else {
-    std::cout << "error while opening dut.sv" << std::endl; return 0;
+    std::cout << "error while opening htoc_item_t.sv" << std::endl; return 0;
   }
     
   ifstream scoreboard ("files/htax_bridge_scoreboard.sv");
@@ -45,7 +45,7 @@ int main(int argc, char **argv, char **env) {
     std::cout << "error while opening htax_bridge_scoreboard.sv" << std::endl; return 0;
   }
   
-   filelinep->create("files/dut.sv", 0);
+   filelinep->create("files/htoc_item_t.sv", 0);
 
    std::cout << "filelinep created" << std::endl;
 
@@ -54,16 +54,16 @@ int main(int argc, char **argv, char **env) {
 
    filelinep->setParser(parser);
 
-   std::cout << "dut.sv start parsing" << std::endl;
+   std::cout << "htoc_item_t.sv start parsing" << std::endl;
 
-   //while(!dut.eof()){
-//	   dut.getline(fileline, 4096);
-//	   parser->VParse::parse(fileline);
-//   }
+   while(!dut.eof()){
+	   dut.getline(fileline, 4096);
+	   parser->VParse::parse(fileline);
+   }
   
    //parser->VParse::setEof();
 
-   std::cout << "dut.sv parsed" << std::endl;
+   std::cout << "htoc_item_t.sv in buffer" << std::endl;
    dut.close();
 
    //-- parsing des Scoreboards
