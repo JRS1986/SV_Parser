@@ -173,6 +173,7 @@ public:
     virtual void endpackageCb(VFileLine* fl, const string& kwd) = 0;
     virtual void endprogramCb(VFileLine* fl, const string& kwd) = 0;
     virtual void endtaskfuncCb(VFileLine* fl, const string& kwd) = 0;
+    virtual void extendsCb()=0;
     virtual void functionCb(VFileLine* fl, const string& kwd, const string& name, const string& data_type) = 0;
     virtual void importCb(VFileLine* fl, const string& package, const string& id) = 0;
     virtual void instantCb(VFileLine* fl, const string& mod, const string& cell, const string& range) = 0;

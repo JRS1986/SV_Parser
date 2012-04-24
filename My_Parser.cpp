@@ -224,6 +224,10 @@ void My_Parser::endtaskfuncCb(VFileLine* fl, const string& kwd) {
     std::cout << "My_Parser::endtaskfuncCb called" << std::endl;
 }
 
+void My_Parser::extendsCb() {
+    std::cout << "My_Parser::extendsCb called" << std::endl;
+}
+
 void My_Parser::functionCb(VFileLine* fl, const string& kwd, const string& name, const string& data_type) {
 //     if (callbackMasterEna() && m_useCb_function) {
 //      cbFileline(fl);

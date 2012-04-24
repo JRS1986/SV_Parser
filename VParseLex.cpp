@@ -97,7 +97,6 @@ typedef int flex_int32_t;
 typedef unsigned char flex_uint8_t; 
 typedef unsigned short int flex_uint16_t;
 typedef unsigned int flex_uint32_t;
-#endif /* ! C99 */
 
 /* Limits of integral types. */
 #ifndef INT8_MIN
@@ -127,6 +126,8 @@ typedef unsigned int flex_uint32_t;
 #ifndef UINT32_MAX
 #define UINT32_MAX             (4294967295U)
 #endif
+
+#endif /* ! C99 */
 
 #endif /* ! FLEXINT_H */
 
@@ -202,7 +203,15 @@ typedef unsigned int flex_uint32_t;
 
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
+#ifdef __ia64__
+/* On IA-64, the buffer size is 16k, not 8k.
+ * Moreover, YY_BUF_SIZE is 2*YY_READ_BUF_SIZE in the general case.
+ * Ditto for the __ia64__ case accordingly.
+ */
+#define YY_BUF_SIZE 32768
+#else
 #define YY_BUF_SIZE 16384
+#endif /* __ia64__ */
 #endif
 
 /* The state buf must be large enough to hold one state per character in the main buffer.
@@ -1992,7 +2001,7 @@ void yyerrorf(const char* format, ...) {
 
 /* identifier */
 /* escaped identifier */
-#line 1996 "VParseLex.cpp"
+#line 2005 "VParseLex.cpp"
 
 #define INITIAL 0
 #define V95 1
@@ -2123,7 +2132,12 @@ static int input (void );
 
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
+#ifdef __ia64__
+/* On IA-64, the buffer size is 16k, not 8k */
+#define YY_READ_BUF_SIZE 16384
+#else
 #define YY_READ_BUF_SIZE 8192
+#endif /* __ia64__ */
 #endif
 
 /* Copy whatever the last rule matched to the standard output. */
@@ -2132,7 +2146,7 @@ static int input (void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO fwrite( VParseLextext, VParseLexleng, 1, VParseLexout )
+#define ECHO do { if (fwrite( VParseLextext, VParseLexleng, 1, VParseLexout )) {} } while (0)
 /* %endif */
 /* %if-c++-only C++ definition */
 /* %endif */
@@ -2147,7 +2161,7 @@ static int input (void );
 	if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
 		{ \
 		int c = '*'; \
-		int n; \
+		size_t n; \
 		for ( n = 0; ((size_t)n < (size_t)max_size) && \
 			     (c = getc( VParseLexin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
@@ -2257,7 +2271,7 @@ YY_DECL
 #line 103 "VParseLex.l"
 
 
-#line 2261 "VParseLex.cpp"
+#line 2275 "VParseLex.cpp"
 
 	if ( !(yy_init) )
 		{
@@ -4282,7 +4296,7 @@ YY_RULE_SETUP
 case 361:
 YY_RULE_SETUP
 #line 574 "VParseLex.l"
-{ FL; VALTEXT; CALLBACK(commentCb); yy_pop_state(); }
+{ VALTEXT; CALLBACK(commentCb); yy_pop_state(); } // No FL; it's at comment begin
 	YY_BREAK
 case 362:
 YY_RULE_SETUP
@@ -4585,7 +4599,7 @@ YY_RULE_SETUP
 case 414:
 YY_RULE_SETUP
 #line 659 "VParseLex.l"
-{ yy_push_state(CMTMODE); yymore(); }
+{ FL; yy_push_state(CMTMODE); yymore(); }  // FL; marks start for COMMENT callback
 	YY_BREAK
 case 415:
 YY_RULE_SETUP
@@ -4605,7 +4619,7 @@ YY_RULE_SETUP
 #line 665 "VParseLex.l"
 ECHO;
 	YY_BREAK
-#line 4609 "VParseLex.cpp"
+#line 4623 "VParseLex.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(V95):
 case YY_STATE_EOF(V01):
@@ -5476,8 +5490,8 @@ YY_BUFFER_STATE VParseLex_scan_string (yyconst char * yystr )
 /* %if-c-only */
 /** Setup the input buffer state to scan the given bytes. The next call to VParseLexlex() will
  * scan from a @e copy of @a bytes.
- * @param bytes the byte buffer to scan
- * @param len the number of bytes in the buffer pointed to by @a bytes.
+ * @param yybytes the byte buffer to scan
+ * @param _yybytes_len the number of bytes in the buffer pointed to by @a bytes.
  * 
  * @return the newly allocated buffer state object.
  */
