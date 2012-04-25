@@ -74,4 +74,4 @@ Parser_cleaned.c: Parser.c $(VHEADERS)
 
 My_Parser:
 	g++ -c $(CCOPTS) $(USEGDB) My_Parser.cpp
-	g++ $(CCOPTS) Main.cpp My_Parser.o VFileLine.o VFileLineParseXs.o VParse.o Parser_cleaned.o VParseLex.o VParseBison.o VSymTable.o VAst.o -fpermissive -o My_Parser $(LDOPTS) $(USEGDB)
+	g++ $(CCOPTS) Main.cpp My_Parser.o VFileLine.o VFileLineParseXs.o VParse.o VParseLex.o VParseBison.o VSymTable.o VAst.o -fpermissive -o My_Parser $(LDOPTS) $(USEGDB)

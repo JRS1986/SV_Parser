@@ -32,6 +32,7 @@ public:
 	        bool m_useCb_endparse:1;
 	        bool m_useCb_endprogram:1;
 	        bool m_useCb_endtaskfunc:1;
+	        bool m_useCb_extends:1;
 	        bool m_useCb_function:1;
 	        bool m_useCb_import:1;
 	        bool m_useCb_instant:1;
@@ -81,6 +82,7 @@ public:
            m_useCb_endparse = true;
            m_useCb_endprogram = true;
            m_useCb_endtaskfunc = true;
+           m_useCb_extends = true;
            m_useCb_function = true;
            m_useCb_import = true;
            m_useCb_instant = true;
