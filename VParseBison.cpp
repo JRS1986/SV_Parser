@@ -43300,6 +43300,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 4330 "VParseBison.y"
     { PARSEP->syms().import((yyvsp[(1) - (2)].fl),(yyvsp[(2) - (2)].str),(yyvsp[(2) - (2)].scp),"*"); 
+    std::cout << "yEXTENS erkannt" << std::endl;
 								  PARSEP->extendsCb(); ;}
     break;
 
@@ -43308,6 +43309,7 @@ yyreduce:
 /* Line 1455 of yacc.c  */
 #line 4332 "VParseBison.y"
     { PARSEP->syms().import((yyvsp[(1) - (5)].fl),(yyvsp[(2) - (5)].str),(yyvsp[(2) - (5)].scp),"*"); 
+    std::cout << "yEXTENS erkannt" << std::endl;
 										  PARSEP->extendsCb(); ;}
     break;
 

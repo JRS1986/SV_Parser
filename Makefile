@@ -36,6 +36,16 @@ H_FILES  = VAst.h \
 	VParseGrammar.h \
 	VParseLex.h \
 	VSymTable.h
+	
+create_objs:
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VParse.cpp
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VFileLineParseXs.cpp
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" Parser_cleaned.c
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VParseLex.cpp
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VParseBison.cpp
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VSymTable.cpp
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VAst.cpp
+	
 
 VFileLine.cpp:
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VFileLine.cpp
@@ -64,4 +74,4 @@ Parser_cleaned.c: Parser.c $(VHEADERS)
 
 My_Parser:
 	g++ -c $(CCOPTS) $(USEGDB) My_Parser.cpp
-	g++ $(CCOPTS) Main.cpp My_Parser.o VFileLine.o VFileLineParseXs.cpp VParse.cpp Parser_cleaned.c VParseLex.cpp VParseBison.cpp VSymTable.cpp VAst.cpp -fpermissive -o My_Parser $(LDOPTS) $(USEGDB)
+	g++ $(CCOPTS) Main.cpp My_Parser.o VFileLine.o VFileLineParseXs.o VParse.o Parser_cleaned.o VParseLex.o VParseBison.o VSymTable.o VAst.o -fpermissive -o My_Parser $(LDOPTS) $(USEGDB)
