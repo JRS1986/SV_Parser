@@ -38,7 +38,7 @@ H_FILES  = VAst.h \
 	VSymTable.h
 	
 create_objs:
-	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VParse.cpp
+	cc -c $(CCOPTS) $(USEGDB) -fPIC "-I$(PERL_INC)" VParse.cpp
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VFileLineParseXs.cpp
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" Parser_cleaned.c
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VParseLex.cpp

@@ -224,8 +224,14 @@ void My_Parser::endtaskfuncCb(VFileLine* fl, const string& kwd) {
     std::cout << "My_Parser::endtaskfuncCb called" << std::endl;
 }
 
-void My_Parser::extendsCb() {
-    std::cout << "My_Parser::extendsCb called" << std::endl;
+void My_Parser::extendsCb(VFileLine* fl, const string& kwd, const string& name) {
+	//     if (callbackMasterEna() && m_useCb_extends) {
+	//         cbFileline(fl);
+	//         static string hold1; hold1 = kwd;
+	//		   static string hold2; hold2 = name;
+	//         call(NULL, 1, "extends", hold1.c_str(), hold2.c_str());
+	//     }
+    std::cout << "My_Parser::extendsCb called, kwd: " << kwd << " name: " << name << std::endl;
 }
 
 void My_Parser::functionCb(VFileLine* fl, const string& kwd, const string& name, const string& data_type) {

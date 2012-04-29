@@ -129,7 +129,7 @@ public:
     void endpackageCb(VFileLine* fl, const string& kwd);
     void endprogramCb(VFileLine* fl, const string& kwd);
     void endtaskfuncCb(VFileLine* fl, const string& kwd);
-    void extendsCb();
+    void extendsCb(VFileLine* fl, const string& kwd, const string& name);
     void functionCb(VFileLine* fl, const string& kwd, const string& name, const string& data_type);
     void importCb(VFileLine* fl, const string& package, const string& id);
     void instantCb(VFileLine* fl, const string& mod, const string& cell, const string& range);

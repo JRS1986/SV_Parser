@@ -4328,9 +4328,9 @@ classExtendsE:			// IEEE: part of class_declaration
 	//			// new class scope correct via classFront
 		/* empty */				{ }
 	|	yEXTENDS class_typeWithoutIdType		{ PARSEP->syms().import($<fl>1,$<str>2,$<scp>2,"*"); 
-												  PARSEP->extendsCb(); }
+												  PARSEP->extendsCb($<fl>1,$<str>1,$<str>2); }
 	|	yEXTENDS class_typeWithoutIdType '(' list_of_argumentsE ')'	{ PARSEP->syms().import($<fl>1,$<str>2,$<scp>2,"*"); 
-										  	  	  	  	  	  	  	  PARSEP->extendsCb(); }
+										  	  	  	  	  	  	  	  PARSEP->extendsCb($<fl>1,$<str>1,$<str>2); }
 	;
 
 //=========

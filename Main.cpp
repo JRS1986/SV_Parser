@@ -76,7 +76,7 @@ int main(int argc, char **argv, char **env) {
       std::cout << "htax_bridge_scoreboard.sv start parsing" << std::endl;
 
       while(!scoreboard.eof()){
-    	  scoreboard.getline(fileline, 4096);
+    	  scoreboard.getline(fileline, 8182);
    	   parser->VParse::parse(fileline);
       }
 
