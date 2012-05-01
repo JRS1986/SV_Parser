@@ -45,6 +45,7 @@ create_objs:
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VParseBison.cpp
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VSymTable.cpp
 	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VAst.cpp
+	cc -c $(CCOPTS) $(OPTIMIZE) -fPIC "-I$(PERL_INC)" VPreProc.cpp
 	
 
 VFileLine.cpp:
@@ -74,4 +75,7 @@ Parser_cleaned.c: Parser.c $(VHEADERS)
 
 My_Parser:
 	g++ -c $(CCOPTS) $(USEGDB) My_Parser.cpp
-	g++ $(CCOPTS) Main.cpp My_Parser.o VFileLine.o VFileLineParseXs.o VParse.o VParseLex.o VParseBison.o VSymTable.o VAst.o -fpermissive -o My_Parser $(LDOPTS) $(USEGDB)
+	g++ $(CCOPTS) Main.cpp My_Parser.o My_PreProc.o VFileLine.o VFileLineParseXs.o VParse.o VParseLex.o VParseBison.o VSymTable.o VAst.o VPreProc.o -fpermissive -o My_Parser $(LDOPTS) $(USEGDB)
+
+My_PreProc:
+	g++ -c $(CCOPTS) $(USEGDB) My_PreProc.cpp

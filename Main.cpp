@@ -1,5 +1,6 @@
 //#include "My_Parser.h"
 #include "VFileLineParseXs.h"
+#include "My_PreProc.h"
 
 	// ---------------------------Perl stuff---------------------------------------------
 	static PerlInterpreter *my_perl;
@@ -51,6 +52,8 @@ int main(int argc, char **argv, char **env) {
 
    My_Parser *parser = new My_Parser(filelinep, symsp, 1, 0);
    parser->set_cb_use();
+
+   My_PreProc *preproc = new My_PreProc();
 
    filelinep->setParser(parser);
 
